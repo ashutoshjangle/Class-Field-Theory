@@ -1,0 +1,359 @@
+\documentclass[twoside, 12pt]{iiser-thesis}
+
+%%%%%%%%%%%%%%%%%%%
+% Packages/Macros %
+%%%%%%%%%%%%%%%%%%%
+\usepackage{fullpage}
+
+\usepackage{amssymb,latexsym,amsmath}     % Standard packages
+\usepackage{graphicx}
+\usepackage{authblk}
+\usepackage{dsfont}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+%\usepackage{hyperref}
+\setlength{\parskip}{1em}
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+%
+% please place your own definitions here and don't use \def but
+% THEOREM Environments ---------------------------------------------------
+
+\newtheorem{thm}{{Theorem}}[section]
+\newtheorem{prop}[thm]{ Proposition}
+\newtheorem{lem}[thm]{ Lemma}
+\newtheorem{coro}[thm]{ Corollary}
+\newtheorem{ex}{ Example}
+\newtheorem{exer}{ Exercise}
+\newtheorem{rem}{Remark}[section]
+\newtheorem{rems}[rem]{ Remarks}
+\newtheorem{remark}[rem]{Remark}
+\newtheorem{defi}{ Definition}[section]
+\newtheorem{defn1}[defi]{Definition}
+\newtheorem{defs}[defi]{Definitions}
+\newtheorem{notation}{ Notation}[section]
+%\newtheorem{mypar}{{\bf }}[section]
+%\newcommand{\skp}{\vspace{\baselineskip}}
+%%\newcommand{\qed}{\hfill\rule{1.6mm}{1.6mm}}
+%\renewcommand{\proof}{\noindent{\bf Proof.\ }}
+%\newcommand{\no}{\nonumber}
+%\newcommand{\noi}{\noindent}
+%\newcommand{\txt}{\textrm}
+%\newcommand{\pa}{\partial}
+%\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\x}{\times}
+\newcommand{\un}{\text{unr}}
+\newcommand{\s}{\text{sep}}
+%\newcommand{\si}{\sigma}
+%\newcommand{\al}{\alpha}
+%\newcommand{\la}{\lambda}
+%\newcommand{\La}{\Lambda}
+%\newcommand{\calF}{\mathcal{F}}
+%\newcommand{\eps}{\varepsilon}
+%\newcommand{\ph}{\varphi}
+%\newcommand{\sig}{\sigma}
+%\newcommand{\tab}{\hspace*{0.3in}}
+%\newcommand{\Tab}{\hspace*{1.0in}}
+%\newcommand{\vf}{\varphi}
+%\newcommand{\del}{\frac{\partial}{\partial t}}
+%\newcommand{\vp}{\varepsilon}
+
+
+\catcode`\@=11
+\catcode`\@=12
+
+
+%%%%%%%%%%%%
+% Document %
+%%%%%%%%%%%%
+%\setcounter{chapter}{-1}
+
+\title{Class Field Theory and Introduction to Iwasawa Theory}
+
+
+\author{Ashutosh Jangle}
+\coordinator{Coordinator} \supervisor{Name of your Guide} \sdesignation{ ? Professor}
+\department{Department of Mathematics} \reader{Name of Your TAC}
+%\reader{Reader 2}
+\dedication{This thesis is dedicated to ?}
+\graduationyear{2018}
+\academicyear{2017-2018}
+\graduationmonth{April}
+
+\thesisabstract{ Write your  abstract here
+}
+\acknowledgments{Not more than 250 words}
+
+\begin{document}
+	\thesisfront
+	
+\chapter*{Introduction}
+
+\chapter{Preliminaries}
+\section{Dedekind domains}
+\begin{notation}
+    Let $R$ be a Dedekind domain, $K$ be its quotient field, $U$ a vector space over $K$, $T$ a submodule of $U$. $T_\mathfrak p = R_\mathfrak p T$. $L,M,N$ denote finitely generated $R$ submodules which span $U$.
+\end{notation}
+\begin{prop}
+$\cap _\mathfrak p T_\mathfrak p = T$.
+\end{prop}	
+\begin{proof}
+This holds true for any integral domain in fact as long as we intersect over all the maximal ideals.
+\newline 
+Obviously, $T \subset \cap _\mathfrak p T_\mathfrak p$. For the other direction, for $u\in \cap _\mathfrak p T_\mathfrak p$ let $$ J_u = \{x \in R \ \big | \  xu \in T \}$$ But $u=x^{-1}w$ for some $w\in T$ and $x \in R$ and $x\notin \mathfrak p$. Thus $J_u \not \subset \mathfrak p$. As this is the case for every $\mathfrak p$, $J_u=R$. 
+\end{proof}
+\begin{lem}
+Given $M$ and $N$ there is nonzero $a\in R$ such that $aM \subset N$.
+\end{lem}
+\begin{lem}
+For all but finitely many $\mathfrak p$, $M_\mathfrak p = N_\mathfrak p$.
+\end{lem}
+
+\subsection{Discriminants}
+\begin{defi}
+Let $L/K$ be a finite extension and define symmetric bilinear form $$(\alpha, \beta ) \mapsto Tr(\alpha, \beta)$$The discriinant of this form is called the discriminant of $L/K$. 
+ \newline More generally given rings $A \subset B$, given $\beta _1, \dots , \beta _n$ elements of $B$, their discriminant is $$D(\beta _1, \dots , \beta _n) = \det (Tr(\beta _i \beta _j))$$ 
+\end{defi}
+\begin{lem}
+If $\gamma _j = \sum _i a_{ij}\beta _i$ for $a_{ij}\in A$ then $$D(\gamma _1, \dots , \gamma _n) = \det (a_{ij})^2 D(\beta _1, \dots , \beta _n).$$
+\end{lem}
+\section{Local Fields}
+\begin{prop}
+The completion of discrete valuation ring $R$ is canonically isomorphic to $\varprojlim R/ \mathfrak m ^n$ where $\mathfrak m$ is the maximal ideal of $R$.
+\end{prop}
+\chapter{Group Cohomology}
+\begin{lem}[Snake lemma]
+\end{lem}
+\begin{prop}
+Let $\{A_i\},\{B_i\}, \{C_i\}$ be inverse system of abelian groups and \[ \begin{tikzcd}
+0 \arrow[r] & A_i \arrow[r] & B_i \arrow[r] & C_i \arrow[r] & 0 
+\end{tikzcd}\] be exact for all $i$ such that 
+\[ \begin{tikzcd}
+ 0 \arrow [r] & A_{i+1} \arrow[r] \arrow[d] & B_{i+1} \arrow[d] \arrow[r] & C_{i+1} \arrow[r] \arrow[d] & 0 \\
+0 \arrow[r] & A_i \arrow[r] & B_i \arrow[r] & C_i \arrow[r] & 0
+\end{tikzcd} \]
+\end{prop}
+
+\chapter{Local Class Field Theory}
+
+\section{Unramified Extensions}\label{sec1}
+\begin{notation} 
+We set $G= \text{Gal} (L/K)$ and $L/K$ finite and unramified extension of local field $K$. As usual, $\pi$ is uniformizer of $K$ and $U_L$ its units.
+    
+\end{notation} 
+\begin{prop}
+$L/K$ is unramified then $H^r(G,U_L)=0$.
+\end{prop}
+We know $ L^\times =U_L \pi ^ \mathbb  Z$ so $$H^r(G, L^\times ) \simeq H^r(G, U_L) \oplus H^r(G, \Z)$$
+As $L/K$ is unramified it is cyclic and thus, as Tate cohomology groups will be 2 periodic, it suffices to show that $\hat H ^0 (G, U_L) =0$.
+
+
+
+
+
+
+
+\section{The invarint map}
+Consider the short exact sequence $$ 0 \rightarrow \Z \rightarrow \Q \rightarrow \Q /\Z \rightarrow 0$$  with trivial $G$-action on all three modules. \newline
+Let $G$ be the galois group of arbitrary unramified extension $L/K$. 
+$$H^1(G, \Q /\Z ) \xrightarrow{\delta} H^2(G,\Z)$$
+$\text{Frob}_{L/K}$ be element of $G$ such that $\text{Frob}_{L/K}\big |_{E}=\text{Frob}_{E/K}$ for some finite subextension.
+\begin{defi}[The invariant map]
+Define the invariant map $$\text{inv}_{L/K} : H^2(G,L^\times) \rightarrow \Q/\Z $$ by following composition 
+$$ H^2 (G, L^\times ) \xrightarrow{\text{ord} _L} H^2 (G,\Z) \xrightarrow{\delta ^{-1}} H^1(G, \Q/\Z)\xrightarrow{f\mapsto f(\text{Frob}_{L/K})} \Q/\Z $$
+\end{defi}
+\begin{notation}
+    $K^{unr}$ is maximal unramified extension in $K^{sep}$.
+\end{notation}
+We have a unique isomorphism 
+$$ \text{inv}_K : H^2(K^{unr}/K) \xrightarrow{\sim} \Q/\Z$$ 
+such that for finite extension $L/K$, 
+$$\text{Inf}:H^2(L/K) \rightarrow H^2(K^{unr}/K)$$ induces isomorphism $$\text{inv}_{L/K}: H^2(L/K) \xrightarrow{\sim} \frac{1}{[L:K]}\Z/\Z$$
+We need to extend this map to ramified extensions. 
+\begin{thm}
+$L/K$ be a finte extension inside $K^{sep}$. then 
+$$\begin{tikzcd}
+H^2(K^{unr}/K) \arrow[d, "\text{inv}_K"] \arrow[r, "\text{Res}"] & H^2(K^{unr}/L) \arrow[d, "\text{inv}_L"] \\
+\Q/\Z \arrow[r, "{[L:K]}"]                                       & \Q /\Z               
+\end{tikzcd}$$
+The $\text{Res}$ map is given by compatible maps $\tau \mapsto \tau \big |_{K^{unr}}: \gal(L^{unr}/L) \hookrightarrow \gal (K^{unr}/K)$ and ${K^{unr }}^\times \hookrightarrow {L^{unr}}^\times$.
+\end{thm}
+\begin{thm}[Class Field Axiom]
+Let $L/K$ be cyclic of order $n$ then $$|H^r(G,L^\times )| = 
+\begin{cases}
+n \quad n \ \text{is even} \\
+1 \quad n \ \text{is odd}
+\end{cases}$$
+\end{thm}
+
+\section{Commutativity}
+Commutativity of 
+$$\begin{tikzcd}
+L^\times/N_{F/L}(F^\times) \arrow[d, "N_{L/K}"] \arrow[r, "\phi_{F/L}"]  & \gal(F/L)^{ab} \arrow[d ] \arrow[r, equal]  &   {H/[H,H]} \arrow[d] \\
+K^\times/N_{F/K}(F^\times) \arrow[r, "\phi _{F/K}"]& \gal(F/K)^{ab} \arrow[r, equal] &   {G/[G,G]}
+\end{tikzcd}$$
+Consider 
+$$\begin{tikzcd}
+0 \arrow[r] & I_G \arrow[r] \arrow[d, hookleftarrow] & \Z [G] \arrow[r] \arrow[d, hookleftarrow] & \Z \arrow[d, equal] \arrow[r]& 0 \\
+0 \arrow[r] & I_H \arrow[r] &\Z [H] \arrow[r] & \Z \arrow[r] &0
+\end{tikzcd}$$
+
+
+
+
+\chapter{Central Simple Algebras}
+
+\chapter{Lubin-Tate formal group laws}
+\section{Power Series}
+\begin{lem}
+\begin{enumerate}
+    \item For all power series $f\in A[[T]]$ and $g,h \in TA[[T]]$ we have $$f\circ (g\circ h)=(f\circ g) \circ h.$$
+    \item Let $f= \sum _{n=1}^\infty $ then there exists $g$ such that $f \circ g=T$ if and only if $a_1$ is unit in which case the $g$ is unique and we have $g \circ f =T$ as well.
+\end{enumerate}
+\end{lem}
+
+\section{Formal group laws}
+\begin{defi}[Formal group law]
+        Let $A$ be a commutative ring a formal group law $F$ is power series $\in A[[X,Y]]$ such that 
+        \begin{enumerate}
+        \item $F(X,Y)=X+Y + (\deg \geq 2)$ 
+        \item $F(X, F(Y,Z))=F(F(X,Y),Z)$
+        \item There exists unique $i_F(X) \in XA[[X]]$ such that $F(X,i_F(X))=0$.
+        \item $F(X,Y)=F(Y,X)$
+        \end{enumerate}
+\end{defi}
+		\begin{defi}Homomorphism of formal group laws
+		$F\rightarrow G$ is a power series $h\in TA[[T]]$ such that $$h(F(X,Y))=G(h(X),h(Y))$$
+		\end{defi}
+\begin{notation}
+Let $A$ be ring of integers of non-archimedean local field $K$, $\pi$ be prime element of $A$.
+
+\end{notation}	
+\begin{defi}
+Let $\mathcal F_\pi$ be set of $f(X) \in A[[X]]$ such that 
+\begin{enumerate}
+    \item $f(X)= \pi X + (\deg \geq 2)$ 
+    \item $f(X)=X^q \mod \pi$.
+\end{enumerate}
+\end{defi}
+
+\begin{lem}\label{ltmainlemma}
+Let $f,g \in \mathcal F _\pi$ and $\phi _1(X_1, \dots, X_n)$ linear form with coefficients in $A$. There exists unique $\phi \in A[[X_1, \dots ,X_n]]$ such that $$\phi (X_1, \dots ,X_n) =\phi _1 + (\deg \geq 2)$$ and $$f(\phi (X_1, \dots , X_n))=\phi (g(X_1), \dots , g(X_n)).$$
+\end{lem}
+\begin{proof}
+Inductively prove that there exists unique polynomial $\phi _r(X_1, \dots , X_n)$ of degree $r$ such that  $$\phi _r (X_1, \dots, X_n) = \phi _1 + (\deg \geq 2)$$ and $$ f(\phi _r (X_1, \dots , X_n))=\phi _r(g(X_1), \dots , g(X_n)) + (\deg \geq r+1).$$
+Define $\phi =\phi _r + (\deg \geq r+1)$. 
+\end{proof}
+According to the lemma there is unique power series $F_f(X,Y)$ such that $$F_f(X,Y)=X +Y + (\deg \geq 2)$$ and $$f(F_f(X,Y)) =F_f(f(X),f(Y)).$$ 
+We can check that $F_f$ is a formal group law. \\
+Such a group law, $F_f$, is called Lubin-Tate formal group law. 
+\begin{defi}
+Using \cref{ltmainlemma}, for $f,g \in \mathcal F _\pi$ and $a\in A$, define $[a]_{g,f}$ to be the unique power series in $A[[T]]$ such that $$[a]_{g,f}(T) =aT + (\deg \geq 2)$$ and $$g \circ [a]_{g,f}=[a]_{g,f}\circ f.$$
+\end{defi}
+Such $[a]_{g,f}$ is homomorphism $F_f \rightarrow F_g.$ 
+\begin{lem}
+We have $$ [a+b]_{g,f}=[a]_{g,f}+_{F_g} [b]_{g,f}$$ and $$ [ab]_{h,f} =[a]_{h,g}\circ [b]_{g,f}.$$
+\end{lem}
+\begin{rem}
+Thus $[1]_{g,f}$ is isomorphism $F_f \simeq F_g$ and so is any $[u]_{g,f}$ for any $u \in A^\times$.
+\end{rem}
+\begin{rem}
+$[\pi]_f =f $
+\end{rem}
+\begin{rem}
+$ a\mapsto [a]_f$ gives injection $A \hookrightarrow \text{End} (F_f)$.
+\end{rem}
+\begin{defi}
+$$\Lambda _f = \{ \alpha \in K^{al} \ | \ |\alpha | <1\} $$
+$$ \alpha +_{\Lambda _f} \beta = \alpha +_{F_f} \beta $$
+$$ a * \alpha =[a]_f (\alpha )$$
+$\Lambda _n$ be submodule of $\Lambda _f$ killed by $[\pi ] _f^n$. 
+\end{defi}
+The $\Lambda _n$ is set of all roots of $f^{(n)}$ in $K^{al}$. We note that if $g$ is another element of $\mathcal F _ \pi$ then $A$-isomorphism $F_f \rightarrow F_g$ induces $A$-isomorphism $\Lambda _f \rightarrow \Lambda _g$.
+\begin{thm} Let $K_{\pi, n}=K[\Lambda _n]$ then
+\begin{enumerate}
+    \item For all $n \geq 1$, $K_{\pi ,n }/K$ is totally ramified of degree $(q-1)(q^{n-1})$
+    \item The action of $A$ on $\Lambda _n$ defines isomorphism $$(A/ \mathfrak m ^n)^\times \rightarrow \gal (K_{\pi,n}/K).$$
+    \item For each $n$, $\pi \in N(K^\times_{\pi,n})$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+We let $f(T) = \pi T + T^q$. Choose $\pi _1$ to be the non zero root of $f(T)$ and then $\pi _n$ as root of $f(T) - \pi _{n-1}$. \\
+$K[\pi _n] (\subset K[\Lambda _n])$ is totally ramified of degree $q^{n-1} (q-1)$.
+$$ K[\Lambda _n] \supset K[\pi _n] \stackrel{q}{\supset} K[\pi _{n-1}] \stackrel{q}{\supset} \dots \stackrel{1}{\supset} K[\pi _1] \stackrel{q-1}{\supset} K$$ 
+\end{proof}
+\begin{prop}
+$A$-module $\Lambda _n$ is isomorphic to $A/(\pi)^n$. $$\text{End}_A(\Lambda _n) \cong A/(pi)^n$$ and $$ \text{Aut}_A (\Lambda _n) \cong (A/(\pi)^n)^\times .$$
+\end{prop}
+\begin{proof}
+The $\Lambda _f$ is a module over a principal ideal domain - $A$. \\
+The polynomial $f=\pi T +T^q$ has $q$ distinct roots. So $\Lambda _1$ has $q$ elements. So $\Lambda _1 \cong A/(\pi)$. \\ For $\alpha \in K^{al} , |\alpha | <1$, $f(T) - \alpha $ has a root in $\Lambda _\alpha$ so $f : \Lambda _f \rightarrow \Lambda _f $ is surjection. \\
+Use induction to prove that $\Lambda _n \cong A/(\pi )^n$.
+Note that $$ 0 \rightarrow \Lambda _1 \rightarrow \Lambda _n \xrightarrow{f} \Lambda _{n-1} \rightarrow 0.$$
+So $\Lambda _n$ has $q^n$ elements and if $\Lambda _n$ is not cyclic then neither is $\Lambda _1$.  Action of $A$ on $\Lambda _n$ induces $$A/(\pi)^n \xrightarrow{\sim} \text{End}_A(\Lambda _n).$$
+\begin{lem}
+Let $G = \gal (L/K), F \in \mathcal O_K [[X_1, \dots , X_n]]$ and $\alpha _1, \dots , \alpha _n \in \mathfrak m _L$
+\end{lem}
+So $\gal (K[\Lambda _n]/K) $ acts on $\Lambda _n$ s $A$-module isomorphism. So $\gal (K[\Lambda _n]/K)\subset (A/(\pi)^n)^\times$. So $$(q-1)q^{n-1} \geq |\gal(K[\Lambda _n]/K)|=[K[\Lambda _n]:K] \geq [K[\pi _n]:K]=(q-1)q^{n-1}$$
+Also $K[\Lambda _n ]=K[\pi _n]$. \\
+Define $f^{[n]}=\Big ( \frac{f}{T} \Big )\circ f^{n-1}$ $$f^{[n]}(T) = \pi + \dots + T^{(q-1)q^{n-1}}$$ $$f^{[n]} (\pi _n) =f^{[n-1]} (\pi _{n-1}) = \dots =0$$
+So $f^{[n]}$ must be minimal polynomial of $f^{[n]}$.\\
+$\pi \in N$.
+\end{proof}
+
+\begin{defi}
+$$K_{\pi,n}=K[\Lambda _n]$$ $$ K_\pi = \cup K_{\pi ,n}$$ 
+\end{defi}
+We saw $$ (A/ \mathfrak m^n ) ^\times \simeq \gal (K_{\pi,n}/K) $$ $$A^\times \simeq \gal(K_\pi /K)$$
+\begin{defi}[Local Artin Map]
+Define $$ \phi _\pi : K^\times \rightarrow \gal ((K_\pi . K^{un})/K)$$ as follows: \\
+for $a \in K^\times ,a=u\pi ^m$ \\
+$\phi _\pi (a)$ acts on $K^{un}$ as $\text{Frob} ^m$ and \\
+$\phi _\pi (a) (\lambda )= [u^{-1}]_f(\lambda) $ for all $lambda \in \cup \Lambda _n$.
+\end{defi}
+We will prove following main theorem:
+\begin{thm}
+For local field $K$ and a uniformizer $\pi$ of $K$, $K_\pi . K^{un}$ and $\phi _\pi$ are independent of the choice of the uniformizer.
+\end{thm}
+\begin{notation}
+Denote valuation ring of $\hat {K^{unr}}$ by $B$ and $\sigma$ be extension of $\text{Frob} \in K^{unr}/K$ to the completion $\hat {K^{unr}}$. For $\theta (T) = \sum _{i=0} ^{\infty} b_i T^i \in B[[T]]$ define $(\sigma \theta )(T)$ to be the power series $\sum _{i=0}^\infty \sigma (b_i)T^i$. 
+\end{notation}
+\begin{prop}
+Let $F_f,F_g$ be formal group laws defined by $f \in \mathcal F _\pi$ and $g\in \mathcal F _{\varpi}$ where $\pi $ and $\varpi = u \pi$ are primes of $K$. Then $F_f$ and $F_g$ are $A$-isomorphic over $B$. More precisely, there exists $\epsilon \in B^ \times $ such that $\frac{\sigma (\epsilon)}{\epsilon}=u$ and a power series $\theta (T) \in B[[T]]$ such that \begin{enumerate}
+    \item $\theta = \epsilon T + (\deg \geq 2)$
+    \item $\sigma \theta = \theta \circ [u]_f$
+    \item $\theta (F_f(X,Y)) = F_g(\theta (X), \theta (Y)) $
+    \item $\theta \circ [a]_f=[a]_g\circ \theta$.
+\end{enumerate}The last two conditions imply that $f$ is homomorphism commuting with action of $A$ and the 
+the first condition implies that $\theta$ is isomorphism.
+\end{prop}
+\begin{proof}
+\begin{lem}
+The maps $b\mapsto \sigma b -b:B \rightarrow B$ and  $b\mapsto \frac{\sigma b}{b}:B^\times \rightarrow B^\times $  are surjective with kernels $A$ and $ A^\x$.
+\end{lem}
+\begin{proof}
+Let $R$ be valuation ring of $K^\un$ with maximal ideal  $\mathfrak n$. Then $R$ is discrete valuation ring and $\varprojlim R/\mathfrak n ^n = B$. We prove $$0 \rightarrow A/\mathfrak m ^n \rightarrow R/\mathfrak n^n \xrightarrow{\sigma -1} R / \mathfrak n^n \rightarrow 0$$ is exact using induction. So for $n=1$ the sequence becomes the familiar $$ 0 \rightarrow k \rightarrow \overline k \xrightarrow{x \mapsto x^q-x} \overline k \rightarrow 0.$$
+Here $\overline k$ is algebraic closure of $k$. For induction refer to the following commutative diagram 
+\[
+\begin{tikzcd}
+0 \arrow[r] & R/\mathfrak n \arrow[r] \arrow[d , "\sigma -1"] & R/\mathfrak n^n \arrow[r] \arrow[d, "\sigma -1"] & R/\mathfrak n^{n-1} \arrow[r] \arrow[d, "\sigma -1"] & 0 \\
+0 \arrow[r] & R/\mathfrak n \arrow[r] & R/ \mathfrak n ^n \arrow[r] & R/\mathfrak n ^{n-1} \arrow[r] & 0
+\end{tikzcd}
+\]
+From snake lemma $\sigma -1: R/\mathfrak n^n \rightarrow R/ n ^n$ is surjective and has $q^n$ elements. Its kernel contains $A/\mathfrak m ^n$ whose size is $q^n$ so must be the full kernel. Taking inverse limit using we get the lemma.
+\end{proof}
+This lemma gives existence of $\epsilon$.
+\end{proof}
+
+%% Reference styles of Books and research articles are different. Some examples are given below.
+\bibliographystyle{plain}
+\bibliography{thesis.bib}
+\end{document}
