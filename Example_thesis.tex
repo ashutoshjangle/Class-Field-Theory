@@ -26,7 +26,7 @@
 \newtheorem{thm}{{Theorem}}[section]
 \newtheorem{prop}[thm]{ Proposition}
 \newtheorem{lem}[thm]{ Lemma}
-\newtheorem{coro}[thm]{ Corollary}
+\newtheorem{cor}[thm]{ Corollary}
 \newtheorem{ex}{ Example}
 \newtheorem{exer}{ Exercise}
 \newtheorem{rem}{Remark}[section]
@@ -53,6 +53,8 @@
 \newcommand{\x}{\times}
 \newcommand{\un}{\text{unr}}
 \newcommand{\s}{\text{sep}}
+\newcommand{\al}{\text{al}}
+\newcommand{\ab}{\text{ab}}
 %\newcommand{\si}{\sigma}
 %\newcommand{\al}{\alpha}
 %\newcommand{\la}{\lambda}
@@ -364,8 +366,57 @@ We should define $\theta$ inductively so that  $\theta _1(T) = \epsilon T$ \[\th
 \[ \sigma \theta _r = \theta _r \circ [u]_f + ( \deg \geq r+1) \]
 Note that our choice of $\epsilon $ ensures that the second of the above condition is satisfied. Suppose we have found $\theta _r$. If we let $b= a\epsilon ^{r+1}, \ a\in B$ from the first and the second conditions above we get that we want $a$ to be solution of \[ (\sigma a -a )(\epsilon u) ^{r+1} =c\] where $c$ is the coefficient of $T^{r+1}$ in $\theta _r \circ [u]_f - \sigma \theta _r$. Again, the lemma proved guarantees such $a$. \\
 Define $h= \sigma \theta \circ f\circ \theta ^{-1}$. We will show that $h \in \mathcal F _\varpi$. 
-\[ h(T)= \sigma \theta \circ f (\theta ^{-1}) (T) = \sigma \theta (\theta ^{-1}(T))^q = \sigma \theta (\sigma \theta ^{-1} (T^q)) =T^q \mod \mathfrak m\]
+$h(T) \in A[[T]]$ as $\sigma h = \sigma \theta \circ [u]_f \circ f \circ \sigma \theta ^{-1} = h$. Also note that \[h(T)= \sigma \epsilon . \pi. \epsilon ^{-1} T + \dots = \varpi T + (\deg \geq 2).\] Also,
+\[ h(T)= \sigma \theta \circ f (\theta ^{-1}) (T) = \sigma \theta (\theta ^{-1}(T))^q = \sigma \theta (\sigma \theta ^{-1} (T^q)) =T^q \mod \mathfrak m\] 
+Let $\theta ' = [1]_{g,h} \circ \theta$. Then one verifies that this $\theta '$ is the one promised in the proposition.
  \end{proof}
+\begin{thm}
+$K_\pi . K^\un$ is independent of $\pi$.
+\end{thm}
+\begin{proof}From above proposition,
+\[\sigma \theta \circ [\pi]_f=[\varpi ]_g \circ \theta \] so $\theta$ gives a bijection $ \Lambda _{f,1} \rightarrow \Lambda _{g,1}$. \\
+$\hat K ^\un (\Lambda _{f,1})= \hat K ^\un (\Lambda _{g,1})$ as \[ \hat K ^\un (\Lambda _{g,1})= \hat K ^\un (\theta (\Lambda _{f,1})) \subset \hat K ^\un (\Lambda _{f,1} = \hat K ^\un (\theta ^{-1} (\Lambda _{g,1})) \subset \hat K ^\un (\Lambda _{g,1}).\]
+We will prove that for any two prime elements $\hat K^ \un (\Lambda _{f,1}) \cap K^ \al = K^ \un (\Lambda _{f,1}) $. This is so because if we have a subextension $K\subset E \subset K^\al$ then $\gal (K^\al/E)$ fixes the closure of $E$ by continuity thus $ \hat E \cap K^\al \subset E$. So $K ^\un (\Lambda _{f,1}) = K ^\un (\Lambda _{g,1})$. Similarly $K ^\un (\Lambda _{f,n})= K^\un (\Lambda _{g,n})$ which implies $K^ \un K _\pi= K^ \un K_\varpi$.
+\end{proof}
+\begin{thm}
+$\phi_\pi$ is independent of $\pi$.
+\end{thm}
+\begin{proof}
+We show that for any two prime elements \[\phi _\pi(\varpi )=\phi _\varpi (\varpi )\]
+On $K ^\un$ both act as Frobenius automorphism, so we only need to check $K_\varpi$. \\
+Note $\phi _\varpi (\varpi)$ is identity on $K_\varpi$. \\
+Let $\theta$ be isomorphism $F_f \rightarrow F_g$ over $\hat K ^\un$ as in the above proposition. It induces isomorphism $ \Lambda _{f,n} \rightarrow \Lambda _{g,n}$ so we need to prove that for all $\lambda \in \Lambda _{f,n}$ \[ \phi _\pi (\varpi ) (\theta (\lambda )) = \theta (\lambda )\]
+which follows as \[ \phi _\pi (\varpi )(\theta (\lambda ))= \\phi _\pi (\pi ) (\theta)(\phi _\pi (u) \lambda )=(\phi_\pi (\pi) \theta )[u^{-1}]_f (\lambda)=\theta (\lambda) \] Note we got the second last inequality again by using the above proposition.
+\end{proof}
+\begin{thm}
+\[K^\ab =K _\pi . K^\un \]
+\end{thm}
+\begin{proof}
+Let $U_{n,m}=(1 + \mathfrak m ^n). <\pi ^m>$ and $K_{n,m}=K_{\pi,n}.K_m$ where $K_m $ is degree $m$ unramified extension. \\
+For all $a\in U_{n,m}$ we know $ \phi _\pi (a) \big | _{K_{n,m}}=1$. 
+\begin{lem}
+For all $a\in K^\x$, $\phi (a) $ and $\phi _\pi (a)$ agree on subfield of $K_{\pi}.K^\un $.
+\end{lem}
+\begin{proof}
+See \cite{milneCFT} p. 26, 1.14.
+\end{proof}
+From the lemma $U_{n,m} \subset N(K^\x _{n,m})$ and one can easily see that $[K^\x :U_{n,m}]=[K_{m,n}:K]$. Thus $U_{n,m}= N(K^\x _{n,m})$. \\
+For finite index abelian extension $L$ of $K$, $N(L^\x)$ has finite index in $K^\x$ and thus is open. So for some $m,n$, $U _{n,m} \subset N(L^\x)$. This gives us $L \subset K_{n,m}$.
+\end{proof}
+\begin{cor}
+Every open subgroup of finite index contains $U_{n,m}$ so a norm group, namely $N(K^\x _{n,m})$. So every open subgroup is a norm group.  
+\end{cor}
+
+
+
+
+
+
+
+
+
+
+
 
 %% Reference styles of Books and research articles are different. Some examples are given below.
 \bibliographystyle{plain}
