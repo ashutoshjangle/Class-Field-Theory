@@ -3,6 +3,7 @@
 %%%%%%%%%%%%%%%%%%%
 % Packages/Macros %
 %%%%%%%%%%%%%%%%%%%
+
 \usepackage{fullpage}
 
 \usepackage{amssymb,latexsym,amsmath}     % Standard packages
@@ -132,18 +133,26 @@ The completion of discrete valuation ring $R$ is canonically isomorphic to $\var
 \chapter{Group Cohomology}
 \begin{lem}[Snake lemma]
 \end{lem}
-\begin{prop}
+\begin{prop}\label{inverselimitexact}
 Let $\{A_i\},\{B_i\}, \{C_i\}$ be inverse system of abelian groups and \[ \begin{tikzcd}
 0 \arrow[r] & A_i \arrow[r] & B_i \arrow[r] & C_i \arrow[r] & 0 
 \end{tikzcd}\] be exact for all $i$ such that 
 \[ \begin{tikzcd}
  0 \arrow [r] & A_{i+1} \arrow[r] \arrow[d] & B_{i+1} \arrow[d] \arrow[r] & C_{i+1} \arrow[r] \arrow[d] & 0 \\
 0 \arrow[r] & A_i \arrow[r] & B_i \arrow[r] & C_i \arrow[r] & 0
-\end{tikzcd} \]
+\end{tikzcd} \] then we find that 
+\[ \begin{tikzcd}
+0 \arrow[r] & \varprojlim A_i \arrow[r] & \varprojlim B_i \arrow[r] & \varprojlim C_i 
+\end{tikzcd}\]
+is exact and if all $\theta_{i+1}:A_{i+1}\rightarrow A_i$ are surjective then \[ \begin{tikzcd}
+0 \arrow[r] & \varprojlim A_i \arrow[r] & \varprojlim B_i \arrow[r] & \varprojlim C_i \arrow[r] & 0
+\end{tikzcd}\] is exact.
 \end{prop}
-
+\begin{proof}
+See \cite{atiyah} Proposition 10.2.
+\end{proof}
 \chapter{Local Class Field Theory}
-
+Standard reference for this topic is \cite{milneCFT}.
 \section{Unramified Extensions}\label{sec1}
 \begin{notation} 
 We set $G= \text{Gal} (L/K)$ and $L/K$ finite and unramified extension of local field $K$. As usual, $\pi$ is uniformizer of $K$ and $U_L$ its units.
@@ -348,12 +357,17 @@ Here $\overline k$ is algebraic closure of $k$. For induction refer to the follo
 0 \arrow[r] & R/\mathfrak n \arrow[r] & R/ \mathfrak n ^n \arrow[r] & R/\mathfrak n ^{n-1} \arrow[r] & 0
 \end{tikzcd}
 \]
-From snake lemma $\sigma -1: R/\mathfrak n^n \rightarrow R/ n ^n$ is surjective and has $q^n$ elements. Its kernel contains $A/\mathfrak m ^n$ whose size is $q^n$ so must be the full kernel. Taking inverse limit using we get the lemma.
+From snake lemma $\sigma -1: R/\mathfrak n^n \rightarrow R/ n ^n$ is surjective and has $q^n$ elements. Its kernel contains $A/\mathfrak m ^n$ whose size is $q^n$ so must be the full kernel. Taking inverse limit using \cref{inverselimitexact} we get the lemma. The proof for the second map is similar.
 \end{proof}
-This lemma gives existence of $\epsilon$.
-\end{proof}
+This lemma gives existence of $\epsilon$. \\
+We should define $\theta$ inductively so that  $\theta _1(T) = \epsilon T$ \[\theta _r(T) = \theta _{r-1} (T) + b T^r \quad b \in B\]
+\[ \sigma \theta _r = \theta _r \circ [u]_f + ( \deg \geq r+1) \]
+Note that our choice of $\epsilon $ ensures that the second of the above condition is satisfied. Suppose we have found $\theta _r$. If we let $b= a\epsilon ^{r+1}, \ a\in B$ from the first and the second conditions above we get that we want $a$ to be solution of \[ (\sigma a -a )(\epsilon u) ^{r+1} =c\] where $c$ is the coefficient of $T^{r+1}$ in $\theta _r \circ [u]_f - \sigma \theta _r$. Again, the lemma proved guarantees such $a$. \\
+Define $h= \sigma \theta \circ f\circ \theta ^{-1}$. We will show that $h \in \mathcal F _\varpi$. 
+\[ h(T)= \sigma \theta \circ f (\theta ^{-1}) (T) = \sigma \theta (\theta ^{-1}(T))^q = \sigma \theta (\sigma \theta ^{-1} (T^q)) =T^q \mod \mathfrak m\]
+ \end{proof}
 
 %% Reference styles of Books and research articles are different. Some examples are given below.
 \bibliographystyle{plain}
-\bibliography{thesis.bib}
+\bibliography{thesis}
 \end{document}
