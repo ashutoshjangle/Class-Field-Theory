@@ -23,7 +23,7 @@
 % please place your own definitions here and don't use \def but
 % THEOREM Environments ---------------------------------------------------
 
-\newtheorem{thm}{{Theorem}}[section]
+\newtheorem{thm}{Theorem}[section]
 \newtheorem{prop}[thm]{ Proposition}
 \newtheorem{lem}[thm]{ Lemma}
 \newtheorem{cor}[thm]{ Corollary}
@@ -49,6 +49,9 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\Ol}{\mathcal{O}}
 \newcommand{\gal}{\text{Gal}}
 \newcommand{\x}{\times}
 \newcommand{\un}{\text{unr}}
@@ -153,6 +156,34 @@ is exact and if all $\theta_{i+1}:A_{i+1}\rightarrow A_i$ are surjective then \[
 \begin{proof}
 See \cite{atiyah} Proposition 10.2.
 \end{proof}
+
+\begin{thm}[Shapiro's lemma]\label{shapiro}
+Let $G$ be a finite group, let $H$ be a subgroup and let $B$ be an $H$-module. Then for every $i\in \Z$ we have canonical isomorphisms \[ \hat H^i (G, \text{CoInd}^G_H(B)) \cong \hat H^i(H,B)\] that together provide natural isomorphisms of $\delta$-functors.
+\end{thm}
+\begin{prop}
+Suppose that $H$ is a subgroup of finite index in $G$ and $B$ is a $H$-module. Then we have a cononical isomorphism of $G$-modules \[\chi: \text{CoInd}^G_H(B) \xrightarrow{\sim}\text{Ind}^G_H(B), \quad \chi (\phi) = \sum _{\overline g \in H \backslash G } g^{-1}\otimes \phi (g)\]
+where for each $\overline g \in H \backslash G$ the element $g\in G$ is an arbitrary choice of representative of $\overline g$.
+\end{prop}
+\begin{proof}
+See \cite{sharifi} Proposition 7.5.4.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \chapter{Local Class Field Theory}
 Standard reference for this topic is \cite{milneCFT}.
 \section{Unramified Extensions}\label{sec1}
@@ -165,6 +196,7 @@ $L/K$ is unramified then $H^r(G,U_L)=0$.
 \end{prop}
 We know $ L^\times =U_L \pi ^ \mathbb  Z$ so $$H^r(G, L^\times ) \simeq H^r(G, U_L) \oplus H^r(G, \Z)$$
 As $L/K$ is unramified it is cyclic and thus, as Tate cohomology groups will be 2 periodic, it suffices to show that $\hat H ^0 (G, U_L) =0$.
+
 
 
 
@@ -407,15 +439,138 @@ For finite index abelian extension $L$ of $K$, $N(L^\x)$ has finite index in $K^
 Every open subgroup of finite index contains $U_{n,m}$ so a norm group, namely $N(K^\x _{n,m})$. So every open subgroup is a norm group.  
 \end{cor}
 
+\chapter{Global Class Field Theory}
+\section{Restricted topological product}
+\begin{defi}
+Let $I$ be an indexing set and $X_i$ topological space for all $i \in I$ let $A_i \subset X_i$ be open subsets. Then the restricted topological product of $X_i$s relative to open subsets $A_i$ is the set \[ \prod _{i\in I} (X_i,A_i) = \Big \{(x_i)_{i\in I} \in \prod _{i\in I} X_i \ \Big | \ x_i \in A_i \text{ for all but finitely many i} \Big  \}\]
+We gave topology on this space such that the basic open sets are \[ \{(x_i)_{i\in I} \ | \ x_i \in U_i \text{ for } i \in J \text{ and } x\in A_i \text{ for } i \in I \}\] 
+where $J \subset I$ is finite and $U_i$ is open subset of $X_i$.
+\end{defi}
+\begin{lem} If for all $i$, $X_i$ is Hausdorff and $A_i$ is open subset of $X_i$ then $\prod _{i\in I} (X_i,A_i)$ is Hausdorff.
+\end{lem}
+\begin{lem}
+If for aall $i\in I$, $G_i$ is locally compact, Hausdorff topological group or ring and $K_i$ is open compact subgroup or subring then $\prod _{i\in I} (G_i,K_i)$ is locally compact, Hausdorff topological group or ring.
+\end{lem}	
+\section{Adeles}
+Let $K$ denote a global field. 
+\begin{defi}
+We define the adele ring $\A_K$ as \[ \A _K = \prod _{v \in V_K} (K_v,\mathcal O _v)\]
+where $V_K$ is the set of all places of $K$ that is the set of equivalence classes of valuations. 
+\end{defi}
+\begin{notation}
+$K_v$ is completion of $K$ w.r.t. $v$ (so it is a local field) and $\Ol _v$ is valuation ring of $v$. 
+\end{notation}
+\begin{defi}
+Define the diagonal embedding map $\delta _K : K \rightarrow \A _K $ as $a \mapsto (a) _v \in V_K$.
+\end{defi}
+\begin{prop}
+The diagonal embedding has discrete image.
+\end{prop}
+\begin{proof} It is enough to prove that there is a open set containing $0$ and no other element of $K$ embedded inside $\A _K$.
+Consider the set \[ U =  \{ (\alpha _v) \  | \ ||\alpha _\infty|| _\infty <1 \text{ and } || \alpha  _v|| _v \leq 1 \text{ for all } v < \infty \} \] 
+Recall that by product formula for $K$, $ \prod _{v} ||\alpha _v || _v =1$ for any non zero $\alpha $ so $U \cap K = \{ 0 \}$.  
+\end{proof}
+\section{Ideles}
+\begin{defi}
+We define idele group as \[ \I _K = \prod _{v\in V_K} (K^\x _v , \Ol ^ \x _v)\]
+\end{defi}
+\begin{defi}
+We define continuous content homomorphism $c_K : \I _K \rightarrow \R _{>0}$ as \[c_K (\alpha ) = \prod _{v \in V_K} \| \alpha \| _v\]
+Define $\I ^1 _K$ as kenrel of $c_K$.
+\end{defi}
 
+\begin{rem}
+$K^\x \subset \I _K ^1$ due to the product formula.
+\end{rem}
+\begin{lem}
+The topology on $\I ^1 _K$ form $\I _K$ agrees with subspace topology from $\A _K$.
+\end{lem}
+\begin{proof}
+Let $x \in \I ^1 _K $ and open neighbourhood $U \subset \I _K$ of $x$ contains \[ u \ | \ \|u-x\|_v < \epsilon \text{ for } v\in S \text{ and } \| u \|_v=1 \text{ otherwise} \}\]
+where $S$ is finite subset of $V_K$. \\
+Consider open set $V$ of $\A _K$. \[ \{ u \ | \ \|u-x\|_v < \epsilon \text{ for } v\in S \text{ and } \| u \| _v \leq 1 \ \text{otherwise} \} \]
+Observe that $\I ^1 _K \cap U = \I^1 _K \cap V$. This along with the observation that $\I  _K$ has finer topology than $\A _K$ gives the result.
+\end{proof}
+\begin{defi}
+Define the idele class group as $\C_K = \I _K/K^\x$.
+\end{defi}
+\begin{prop}
+Define map $\pi _K : \I _K \rightarrow I_K$ as $\pi _K (\alpha) = \prod _{v \in V_{K,f}} \mathfrak p _v ^{v(\alpha )}$. Here $V_{K,f}$ denotes the set of finite places of $K$ and $\mathfrak p _v$ denotes prime corresponding to finite place $v$. For a number field $K$, $\pi _K( \I^1 _K) = I_K$ and $\pi $ is continuous once we give $I_K$ discrete topology. 
+\end{prop}
+\begin{proof}
+Consider idele of content $1$ which is $\pi _\mathfrak p$ at the place corresponding to $\mathfrak p$ and $\frac{1}{\|\pi _\mathfrak p \|_{\mathfrak p}^{\frac{1}{[K:\Q ]}}}$ at archimedean place and $1$ everywhere else.
+\end{proof}
+\section{Statements of Global Class Field Theory}
+\begin{lem}
+Let $L/K$ be finite extension of global fields and $\alpha \in \I _K$. Then $\phi _{L_w/K_v} (\alpha _v) =1$ for all places $w$ above place $v$ for all but finitely many $v$.
+\end{lem}
+\begin{lem}
+Let $\alpha \in K_v^\x $ then \[\phi _{L_w/K_v}(\alpha ) \big | _L \in \gal (L/K)\] is independent of a place $w$ lying over $v$.
+\end{lem}
+\begin{proof}
+We have canonical map \[G^\ab _{L_w/K_v} \rightarrow D_w \rightarrow G _{L/K} ^\ab \] where $D_w$ is the decomposition group at place $w$ over $v$. This map is independent of choice of $w$ since action by conjugation is trivial on $G^\ab _{L/K}$.
+\end{proof}
+\begin{defi}[Global reciprocity map]
+For finite extension $L/K$ of global fields define \[ \Phi _{L/K} : \I _K \rightarrow \gal (L/K) \] as \[\Phi _{L/K} (\alpha ) = \prod _{v\in V_K} \phi _{L_w/K_v}(\alpha _v) \big |_L \] where $w$ is some place over $v$.  \\
+As $\phi _{L_w/K_v}(\alpha _v)= \phi _{M_u/K_v}(\alpha _v) \big |_{L_w} $ for $L \subset M$ and $w \in V_L$ over $v$ and $u \in V_M$ over $w$, it follows that $\Phi _{L/K}(\alpha ) = \Phi _{M/K} (\alpha ) \big |_L$ so we may define \[ \Phi _K : \I _K \rightarrow G^\ab _K \] as $\Phi _K = \varprojlim \Phi _{L/K}$.
+\end{defi}
+\begin{thm}[Global Reciprocity] 
+$L/K$ abelian extension then 
+\begin{enumerate}
+\item $\Phi _K (a) =1 $ for all $a \in K^\x$.
+\item $\Phi _{L/K}$ is surjective with kernel $K^\x N_{L/K}(\I _L)$.
 
+\end{enumerate}
+where \[ N_{L/K} ((a_u)_u) = \big ( \prod _{u |v} N_{L_u/K_v} a_u ) _v .\]
+We may also state this as \[ \C _K/N_{L/K}(\C _L) \xrightarrow{\sim} \gal (L/K) .\]
+\end{thm}
+\begin{thm}[Existence theorem for global class field theory]
+The open subgroups of $\C _K$ of finite index are exactly the norm subgroups of finite abelian extension $L/K$.
+\end{thm}
+\begin{notation}
+Henceforth, in this section, $K$ is a number field. 
+\end{notation}
 
+\begin{defi}
+Define modulus $\mathfrak m $ by a formal product as $\mathfrak m = \mathfrak m_f \mathfrak m _{\infty} $. Here $\mathfrak m _f$ is formal product of finite places and $\mathfrak m _\infty $ of infinite.
+\end{defi}
 
+\begin{defi}[Artin map]
+For finite abelian extension define Artin map \[\Psi _{L/K} ^\mathfrak m : I ^\mathfrak m _K \rightarrow \gal (L/K) \]
+where $\mathfrak m$ is a modulus such that every place that ramifies divides $\mathfrak m$ and \\
+ $I ^\mathfrak m _K$ is $\mathfrak m$-ideal group is a subgroup of ideal group generated by non zero prime ideals which do not divide $\mathfrak m$ such that \\
+ $\Psi ^\mathfrak m _{L/K} (\mathfrak p)$ is Frobenius element at $\mathfrak p$ for $\mathfrak p$ which does not divide $\mathfrak m _f$.
+ \end{defi}
+ 
+\begin{defi} 
+We define $a = ^* b$ if $a=b \mod \mathfrak m_f $ and $\frac{a}{b}$ in real embedding is $>0$. \\
+Define \[K_{\mathfrak m ,1}= \{ a \in K^\x \ | \ a = ^* 1 \mod \mathfrak m\} \] \\
+Let $P^ \mathfrak m _K$ is fractional ideals generated by elements of $K_{\mathfrak m, 1}$. \\
+Ray class group $Cl_K ^\mathfrak m$ is defined as $I_K ^\mathfrak m / P_K ^\mathfrak m $. \\
+The reciprocity map is $\Psi _K ^\mathfrak m : Cl_K ^\mathfrak m \rightarrow \gal (L/K)$.\\ 
+Defning modulus is such that every prime that ramifies divides $\mathfrak m$ and $P^\mathfrak m _K \subset \ker \Psi ^\mathfrak m _{L/K}$. 
+\end{defi}
+ This map induces a map on ray class group when $\mathfrak m$ is defining modulus 
+\section{First inequality}
+\subsection{Cohomology of ideles}
+\begin{prop}
+Let $v$ be a place of $K$ and $u$ be a place of $L$ lying above it and $G=\gal(L/K)$ then \[\text{Ind}_{G_u}^G(L_u ^\x) \simeq \prod _{w|v} L^\x _w \] and \[ \text{Ind} _{G_u}^G(\Ol _u ^\x ) \simeq \prod _{w|v} \Ol _w ^\x \]
+\end{prop}
+\begin{proof}
+We know $\sigma $ induces isomorphism $\sigma : L_u \rightarrow L_{\sigma (u)}$. Consider the restriction of \[ \Z [G] \otimes _{\Z[G_u]}L_u \rightarrow \prod _{w|v}L_w\]
+induced by $(\sigma , \beta ) \mapsto \sigma (\beta )\in L_{\sigma (u)} .$
+\end{proof}
+\begin{defi}
+Suppose $S$ is a finite set of places of $K$, define \[ \I _{L,S} = \prod _{v\in S} \prod _{w|v} L^\x _w \times \prod _{v\not \in S } \prod _{w|v} \Ol ^\x _w \]
+\end{defi}
 
-
-
-
-
+\begin{prop}
+Let $S$ be a finite set of places containing the archimedean places and places that ramify in $L/K$, we have isomorphism for all $i \in \Z$ and a place $w|v$ 
+\[ \hat H^i (G, \I _{K,S} ) \simeq \oplus _{v\in S} \hat H^i (G_w,L_w ^\x ) .\]
+\end{prop}
+\begin{proof}
+By Shapiro's lemma (\Cref{shapiro}) \[ \hat H^i(G_u, L_u ^\x) \cong H^i(G, \prod _{w|v} L_w ^\x) \]
+\end{proof}
 
 
 %% Reference styles of Books and research articles are different. Some examples are given below.
