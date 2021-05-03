@@ -101,10 +101,20 @@
 \begin{document}
 	\thesisfront
 	
-\chapter*{Introduction}
 
 \chapter{Preliminaries}
+\begin{lem}\label{coeffbound}
+Let $n,N \geq 1$ , the number of algebraic integers $\alpha$, such that $[ \Q [\alpha ]:\Q ] \leq n $ and $|\sigma (\alpha ) | \leq N$ for all archimedean embeddings $\sigma$ is finite.
+\end{lem}
+\begin{proof}
+Let $\min (\alpha , \Z )= \prod _\sigma (x-\sigma (\alpha ))$. Coefficients of this minimal polynomial are bounded as $|a_i | \leq N^{n-1} {n \choose i}$. 
+\end{proof} 
+
+
+
+
 \section{Dedekind domains}
+
 \begin{notation}
     Let $R$ be a Dedekind domain, $K$ be its quotient field, $U$ a vector space over $K$, $T$ a submodule of $U$. $T_\mathfrak p = R_\mathfrak p T$. $L,M,N$ denote finitely generated $R$ submodules which span $U$.
 \end{notation}
@@ -170,7 +180,10 @@ See \cite{sharifi} Proposition 7.5.4.
 
 
 
-
+\subsection{Herbrand quotient}
+\begin{lem}\label{herbrandtensorq}
+Let $G$ be finite, cyclic, $M$ and $N$ are finitely generated $G$ modules such that $M \otimes _\Z \Q$ and $N \otimes _\Z \Q$ are isomorphic as $G$ modules. If either $h(M)$ or $h(N)$ is defined then so is other and they are equal.
+\end{lem}
 
 
 
@@ -569,8 +582,93 @@ Let $S$ be a finite set of places containing the archimedean places and places t
 \[ \hat H^i (G, \I _{K,S} ) \simeq \oplus _{v\in S} \hat H^i (G_w,L_w ^\x ) .\]
 \end{prop}
 \begin{proof}
-By Shapiro's lemma (\Cref{shapiro}) \[ \hat H^i(G_u, L_u ^\x) \cong H^i(G, \prod _{w|v} L_w ^\x) \]
+By Shapiro's lemma (\Cref{shapiro}) \[ \hat H^i(G_u, L_u ^\x) \cong H^i(G, \prod _{w|v} L_w ^\x) \] and \[ \hat H^i(G_u, \Ol ^\x _u) \cong \hat H^i (G, \prod _{w|v} \Ol ^\x _w) \] for all $i \in \Z$. As Tate cohomology commutes with products, 
+\[ \hat H^i (G, \I _{L,S} ) \cong \prod _{v\in S} \hat H^i \Big( G, \prod _{w|v}L^\x _w\Big) \x \prod _{v \not \in S} \hat H^i\Big(G, \prod _{w|v} \Ol ^\x _w\Big) \] which gives us the result using above observation and the fact that $\hat H^i (G_w, \Ol ^\x_w) =0$ for all $i \in \Z $.
 \end{proof}
+\begin{rem}
+So $|\hat H^0 (G,\I _{L,S})| = \prod _{v\in S} |G_w| $ by Local class field theory. \\
+By Hilbert $90$  we get $H^1(G, \I _{L,S})=0$ and 
+by the invariant map of Local class field theory \[H^2(G, \I _{L,S}) = \bigoplus _{v\in S} \frac{1}{|G_w|}\Z /\Z \]
+\end{rem}
+\begin{rem}
+As $\I _L = \varinjlim _S \I _{L,S}$ we get \[ \hat H^i(G, \I _L)\cong \oplus _{v\in V_K} \hat H^i (G_w, L_w ^\x) \]
+so $H^1(G, \I _L) =0$ and \[H^2 (G, \I _L) \cong \bigoplus _{v\in V_K} \frac{1}{G_w} \Z /\Z \]
+\end{rem}
+\begin{defi}
+Define ring of $S$-integers \[\Ol _{K,S} = \{ \alpha \in K \ | \ \alpha \in \Ol _v \text{ for all } v \text{ such that } v\not \in S \} .\]
+\end{defi}
+Recall Dirichlet's unit theorem. It says $\Ol _K^\x \simeq \Z ^{r_1(K ) + r_2 (K) -1 } \x \mu (K) $. Below we generalize it for ring of $S$-integers.
+\begin{prop}
+\[ \text{rank}_\Z \Ol ^\x _{K,S} = |S| -1.\]
+\end{prop}
+\begin{proof}
+Consider the exact sequence 
+\[1 \rightarrow \Ol _K ^\x \rightarrow \Ol _{K,S} ^\x \xrightarrow{\sum_{v\in S_f} v} \oplus _{v\in S_f} \Z \]
+here $S_f$ is finite places in $S$.
+We only need to show that there exists a $S$-unit with nonzero valuation at a given $v\in S_f$ and zero at all other places in $S_f$. Consider $\mathfrak p$ corresponding to $v$ some power of $\mathfrak p$ is principal due to finiteness of size of class group. Generator of this ideal is then the required $S$-unit.
+\end{proof}
+\begin{lem}\label{idelefield}
+Suppose $S$ contains set of finite places generating the ideal class group of $\Ol _K$, then $\I _K = \I _{K,S} K ^\x$
+\end{lem}
+\begin{proof}
+Note that $\I _{K,S}$ maps surjectively onto $Cl_K$. Let $\phi : \I _K \rightarrow Cl _K $ defined by $(\alpha )_v \mapsto \prod _{v \in V_f} \mathfrak p _v ^{v(\alpha )} $. Then $\ker \phi = \Ol . K^\x$ where $\Ol $ is set of local units at finite places and local multiplicative group at infinite places. Thus we have \[\I _K /\Ol . K^\x \cong Cl _K \quad \text {and } \quad \I _{K,S}. K^\x/ \Ol . K^\x \cong Cl_K \]  \[ (\I _K / \Ol . K^\x )/(\I _{K,S} . K^\x/\Ol . K^ \x ) \cong Cl_K /Cl_K  \cong 1 \] Thus $\I _K / \I _{K,S} K ^\x \cong 1 \implies \I _K =\I _{K,S} K^\x $
+\end{proof}
+\begin{thm}
+Let $L/K$ be cyclic then $h(G,\C _L) =[L:K]$.
+\end{thm}
+\begin{proof}
+Let $S$ contain ramified primes and finite places lying below primes generating the ideal class group of $\Ol _L$. 
+Note that $\I _{K,S} \cap K^ \x = \Ol _{K,S} ^\x$. So from \cref{idelefield}
+\[ \C _L \simeq \I _{L,S} / \Ol _{L,S} ^\x \]
+and thus \[h(G, \C _L) = \frac{h(G, \I _{L,S})}{h(G,\Ol _{L,S}^\x)} \]
+Let $S_L$ be set of places in $L$ over $S$ and $V$ be $\R$-vector space with elements in $S_L$ as basis. Then $G$ acts on $V$. Consider $\Z [G]$ submodule $A$ generated over $\Z$ by the basis. \[ A \cong \oplus _{v \in S} \oplus _{w|v} \Z _w \cong \oplus _{v \in S} \text{Ind} ^G _{G_w} (\Z) \] \[h(G,A) = \prod _ {v\in S} h(G_w, \Z ) =  \prod _{v \in S} [L_w : K_v]\]
+Define $l_{L,S} : \Ol ^\x _{L,S} \rightarrow V $ such that $l_{L,S} (\beta ) = ( \log \| \beta \| _w ) _{w \in S_L } $. By \cref{coeffbound} we have that $\ker l_{L,S}$ is finite.
+\newline
+By product formula the image of $l_{K,S}$ is contained in the huperplane $V^0$ of elements that sum to $0$. 
+\[ \text{rank } \Ol ^\x _{L,S} = \text{rank} \Ol _L^\x + \text{ number of finite places in } S_L \] 
+So the image of $l_{L,S}$, $B^0$, is complete lattice in $V^0$. 
+\newline
+Let $x = (1) _{w \in S_L} \in V ^G$ and let \[ B = \Z x + B^0 \] Observe that $B$ is complete lattice in $V$. We have \[ 0 \rightarrow B^0 \rightarrow B \rightarrow \Z x \rightarrow 0\]  so $h(G,B)=h(G, B^0)$using \cref{herbrandtensorq}  $h(G,\Z ) = h(G, \Ol _{L,S}^\x).[L:K]$.  
+\newline
+Complete lattice in finite dimensional vector spaces are isomorphic upon tensor product with $\Q$. So $h(G,A) =h(G,B)$ that is $h(G, \Ol _{L,S} ^\x ) = \frac{1}{n} \prod _{v \in S} [L_w : K_v]$.
+Thus we get the theorem.
+
+\end{proof}
+
+\subsection{Consequences}
+\begin{cor}
+Let $L/K$ finite abelian extension, $D$ a subgroup of $\I _K$ such that \begin{enumerate}
+\item $D \subset N_{L/K} (\I _L)$
+\item $K^\x D $ is dense in $\I _K$ 
+\end{enumerate}
+Then $L =K$.
+\end{cor}
+\begin{proof}
+Assume $L/K$ is cyclic WLOG.
+$N_{L/K}(\I _L)$ is open in $\I _K$ so $K^\x N_{L/K} (\I _L)$ is open, and therefore closed, and dense. So by first inequality $L=K$. 
+\end{proof}
+
+
+
+\begin{lem}
+Let $S$ be any finite set of places such that it contains all the archimedean and ramified places. Then $\gal (L/K)$ is generated by $\text{Frob} (v)$ such that $v \not \in S$.
+\end{lem}
+\begin{cor}
+If $L/K$ is non trivial abelian then there are infinitely many primes that do not split completely.
+\end{cor}
+\subsection{Chebotarev density theorem}
+\begin{defi} Natural density is also called asymptotic density is probability of encountering desired number in $[1,n]$ as $n\rightarrow \infty$.
+\end{defi}
+Let $L/K$ be galois extension of number fields. Let $\big( \frac{L/K}{\mathfrak p} \big)$ be the conjugacy class of $\text{Frob}_{L/K} (\mathfrak p)$ for $\mathfrak p$ unramified in $L/K$. 
+\begin{thm}[Chebotarev density theorem]
+Let $A=\{ \mathfrak p \ | \ \big( \frac{L/K}{\mathfrak p} = \mathcal C \big) \}$. The density of $A$ is $\delta (A) = \frac{|\mathcal C| }{|G|} $.
+\end{thm}
+As corollary we get Dirichlet's theorem of infinitude of primes in arithmetic progression. To see this consider $L =\Q(\zeta _n) , K= \Q$, for positive integers such that $(a,n)=1$ apply the theorem to $\mathcal C = \{ \zeta _n \mapsto \zeta ^a _n \}$.
+
+
+
+
+
 
 
 %% Reference styles of Books and research articles are different. Some examples are given below.
